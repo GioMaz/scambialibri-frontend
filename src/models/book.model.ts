@@ -1,6 +1,6 @@
-import { IOffer } from 'app/models/offer.model';
+import IOffer from './offer.model';
 
-export interface IBook {
+export default interface IBook {
     id: number;
     isbn: string;
     title: string;

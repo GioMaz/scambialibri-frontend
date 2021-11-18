@@ -1,4 +1,4 @@
-export interface IAlert {
+export default interface IAlert {
     type: AlertType;
     message: string;
     permanent: boolean;

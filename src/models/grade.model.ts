@@ -1,4 +1,4 @@
-export interface IGrade {
+export default interface IGrade {
     id: string;
     year: number;
     section: string;

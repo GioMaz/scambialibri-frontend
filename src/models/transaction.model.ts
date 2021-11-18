@@ -1,7 +1,7 @@
-import { BookStatus, IBook } from 'app/models/book.model';
-import { IUser } from 'app/models/user.model';
+import { BookStatus, IBook } from './book.model';
+import IUser from './user.model';
 
-export interface ITransaction {
+export default interface ITransaction {
     id?: string;
     book?: IBook;
     user?: IUser;

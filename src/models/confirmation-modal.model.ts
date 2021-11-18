@@ -1,4 +1,4 @@
-export interface IConfirmationModal {
+export default interface IConfirmationModal {
     title: string;
     question: string;
     confirmMessage: string;

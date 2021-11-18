@@ -1,6 +1,6 @@
-import { ISchool } from 'app/models/school.model';
+import ISchool from './school.model';
 
-export interface ISpecialization {
+export default interface ISpecialization {
     id: string;
     name?: string;
     school?: ISchool;

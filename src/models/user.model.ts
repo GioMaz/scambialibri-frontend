@@ -1,4 +1,4 @@
-export interface IUser {
+export default interface IUser {
     id: string;
     accessToken: string;
     mail: string;

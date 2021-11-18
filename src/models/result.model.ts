@@ -1,5 +1,5 @@
 // import { BookStatus } from './book-unit.model';
-import { IBook } from './book.model';
+import IBook from './book.model';
 
 export interface IResult {
     book: IBook;
