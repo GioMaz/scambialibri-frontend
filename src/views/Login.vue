@@ -1,12 +1,8 @@
 <template>
   <div class="login">
     <form @submit.prevent="login()">
-      <div>
-        <input type="text" v-model="mail" placeholder="Indirizzo e-mail">
-      </div>
-      <div>
-        <input type="password" v-model="password" placeholder="Password">
-      </div>
+      <input type="text" v-model="mail">
+      <input type="password" v-model="password">
       <button @click="login">Login</button>
     </form>
   </div>
@@ -14,7 +10,14 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { AuthService } from '../services/auth.service';
+
+import router from '../router'
+
+import AuthService from '../services/auth.service';
+
+import Alert from '../components/Alert.vue'
+
+import IUser from '../models/user.model';
 
 export default defineComponent({
   name: 'Login',
@@ -22,14 +25,30 @@ export default defineComponent({
   },
 
   setup() {
-    const mail = ref(null)
-    const password = ref(null)
-    const API_URL = 'http://localhost:1337/user/login/'
+    const mail = ref();
+    const password = ref();
+    const API_URL = 'http://localhost:1337/user/login/';
+    const user = ref();
+    // const messages = ref();
 
     const auth = new AuthService(API_URL);
 
-    const login = () => {
-      auth.login(mail.value, password.value)
+    const login = async () => {
+      try {
+        user.value = await auth.login(mail.value, password.value) as IUser
+
+        if (user.value.onboardingCompleted) {
+          router.push('/')
+          // messages.value.push(
+          //   {message: 'Login effettuato con successo!', status: 'completed'})
+        } else {
+          // messages.value.push(
+          //   {message: 'Non hai completato la procedura di onboarding!</b><br>Verifica la tua casella l\'e-mail di benvenuto!', status: 'completed'})
+        }
+      }
+      catch (err) {
+        console.log(err)
+      }
     }
 
     return { mail, password, login };
@@ -37,47 +56,3 @@ export default defineComponent({
 
 });
 </script>
-
-<style>
-body {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-}
-
-img {
-  width: 80%;
-}
-
-form {
-  background-color: #15172b;
-  border-radius: 20px;
-  box-sizing: border-box;
-  padding: 20px;
-  width: 320px;
-}
-
-input {
-  background-color: #303245;
-  border-radius: 12px;
-  border: 0;
-  box-sizing: border-box;
-  color: #eee;
-  padding: 15px 20px;
-  margin: 0px 0px 10px 0px;
-  width: 100%;
-}
-
-button {
-  background-color: #489FB5;
-  border-radius: 12px;
-  border: 0;
-  box-sizing: border-box;
-  color: #eee;
-  padding: 15px 20px;
-  margin: 0px 0px 10px 0px;
-  width: 100%;
-  filter: drop-shadow(0px 4px 0px #16697A);
-}
-</style>

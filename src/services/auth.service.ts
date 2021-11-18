@@ -1,7 +1,7 @@
-import { IUser } from '../models/user.model';
+import IUser from '../models/user.model';
 import axios from 'axios';
 
-export class AuthService {
+export default class AuthService {
     private url: string;
     public user: IUser
     public token: string 
@@ -17,11 +17,10 @@ export class AuthService {
           password: password
         })
 
-        if (!response.data.accessToken) {
-            return;
-        }
+        // if (!response.data.accessToken) {
+        // }
 
-        this.user = response.data;
+        this.user = response.data as IUser;
         this.token = this.user.accessToken;
 
         this.saveStateToLocalStorage();
