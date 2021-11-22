@@ -1,9 +1,7 @@
 <template>
   <div class="notification">
-    <div v-show="isVisible">
-      {{ notification.message }}
-      {{ notification.status }}
-    </div>
+    {{ notification.message }}
+    {{ notification.status }}
   </div>
 </template>
 
@@ -14,6 +12,9 @@ export default defineComponent({
   name: 'Notification',
   props: [ 'notification' ],
   components: {
+  },
+  setup(props, { emit }) {
+    setTimeout(function() { () => emit('deleteNotification', 0) }, 1000);
   }
 });
 </script>
