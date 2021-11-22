@@ -42,7 +42,7 @@ export default defineComponent({
 
     const login = async () => {
       try {
-        user.value = await auth.login(mail.value, password.value)
+        user.value = await auth.login(mail.value as string, password.value as string)
 
         if (user.value.onboardingCompleted) {
           router.push('/books/to-buy')

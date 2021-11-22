@@ -11,7 +11,7 @@ export default class AuthService {
         this.url = url;
     }
 
-    async login(mail: any, password: any) {
+    async login(mail: string, password: string): Promise<IUser> {
         const response = await axios.post(this.url, {
           mail: mail,
           password: password
@@ -26,7 +26,7 @@ export default class AuthService {
         return this.user;
     }
 
-    logout() {
+    logout(): void {
         this.authenticated = false;
         localStorage.clear();
     }
