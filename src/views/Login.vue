@@ -1,29 +1,38 @@
 <template>
   <div class="login">
-    <form @submit.prevent="login()">
-      <input type="text" v-model="mail">
-      <input type="password" v-model="password">
-      <button>Login</button>
-    </form>
-    <NotificationList :notifications="notifications"/>
+    <n-form>
+      <n-form-item label="Email" path="email">
+        <n-input :value="email" placeholder="Email" />
+      </n-form-item>
+      <n-form-item label="Password" path="password">
+        <n-input :value="password" placeholder="Password" type="password"/>
+      </n-form-item>
+      <n-form-item>
+        <n-button type="primary" @click="login()">Login</n-button>
+      </n-form-item>
+    </n-form>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import { 
+    NButton,
+    NInput,
+    useMessage,
+} from 'naive-ui'
 
 import router from '../router'
 
 import AuthService from '../services/auth.service';
-
-import NotificationList from '../components/NotificationList.vue'
 
 import IUser from '../models/user.model';
 
 export default defineComponent({
   name: 'Login',
   components: {
-    NotificationList
+    NButton,
+    NInput,
   },
 
   setup() {
@@ -34,9 +43,7 @@ export default defineComponent({
 
     const user = ref<IUser>()
 
-    const notifications = ref<[{message: string, status: string}]>([
-      { message: "ciao", status: "completed" }
-    ]);
+    const message = useMessage()
 
     const auth = new AuthService(API_URL)
 
@@ -47,34 +54,28 @@ export default defineComponent({
         if (user.value.onboardingCompleted) {
           router.push('/books/to-buy')
 
-          notifications.value.push(
-            { message: 'Login effettuato con successo!', status: 'completed' }
-          )
+          message.success("Login effettuato con successo!")
         } else {
-          notifications.value.push(
-            { message: 'Non hai completato la procedura di onboarding!</b><br>Verifica la tua casella l\'e-mail di benvenuto!', status: 'not-completed' }
-          )
+          message.error('Non hai completato la procedura di onboarding!</b><br>Verifica la tua casella l\'e-mail di benvenuto!')
         }
       }
       catch (err) {
         console.log(err)
         if (err === 401) {
-          notifications.value.push(
-            { message: 'Credenziali di login errate!', status: 'not-completed' }
-          )
+          message.error('Credenziali di login errate!')
         // } else if (err.body.error === 'onboarding_not_completed') {
-          notifications.value.push(
-            { message: '<b>Non hai completato la procedura di onboarding!</b><br>Verifica sulla tua casella l\'e-mail di benvenuto!', status: 'not-completed' }
-          )
+        //   message.error('<b>Non hai completato la procedura di onboarding!</b><br>Verifica sulla tua casella l\'e-mail di benvenuto!')
         } else {
-          notifications.value.push(
-            { message: 'Errore inaspettato!', status: 'not-completed' }
-          )
+          message.error('Errore inaspettato!')
         }
       }
     }
 
-    return { mail, password, notifications, login };
+    const warning = () => {
+      message.success('ciao')
+    }
+
+    return { mail, password, login, warning };
   }
 
 });
