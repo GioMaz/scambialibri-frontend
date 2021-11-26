@@ -1,5 +1,5 @@
 <template>
-  <n-message-provider>
+  <n-message-provider placement="bottom-right">
     <router-view/>
   </n-message-provider>
 </template>
