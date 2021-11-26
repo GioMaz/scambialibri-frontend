@@ -1,17 +1,29 @@
 <template>
-  <div class="login">
+  <n-card>
     <n-form>
-      <n-form-item label="Email" path="email">
-        <n-input :value="email" placeholder="Email" />
-      </n-form-item>
-      <n-form-item label="Password" path="password">
-        <n-input :value="password" placeholder="Password" type="password"/>
-      </n-form-item>
-      <n-form-item>
-        <n-button type="primary" @click="login()">Login</n-button>
-      </n-form-item>
+      <n-space vertical>
+        <n-form-item-row>
+          <n-input
+            v-model:value="email"
+            placeholder="Email"
+          />
+        </n-form-item-row>
+        <n-form-item-row>
+          <n-input
+            v-model:value="password"
+            placeholder="Password"
+            type="password"
+            show-password-on="mousedown"
+          />
+        </n-form-item-row>
+        <n-button
+          type="primary" 
+          @click="login()"
+          block
+        >Login</n-button>
+      </n-space>
     </n-form>
-  </div>
+  </n-card>
 </template>
 
 <script lang="ts">
@@ -20,6 +32,8 @@ import {
     NButton,
     NInput,
     useMessage,
+    NCard,
+    NSpace,
 } from 'naive-ui'
 
 import router from '../router'
@@ -33,23 +47,22 @@ export default defineComponent({
   components: {
     NButton,
     NInput,
+    NCard,
+    NSpace,
   },
 
   setup() {
     const API_URL = 'http://localhost:1337/user/login/'
 
-    const mail = ref<string>()
+    const email = ref<string>()
     const password = ref<string>()
-
     const user = ref<IUser>()
-
     const message = useMessage()
-
     const auth = new AuthService(API_URL)
 
     const login = async () => {
       try {
-        user.value = await auth.login(mail.value as string, password.value as string)
+        user.value = await auth.login(email.value as string, password.value as string)
 
         if (user.value.onboardingCompleted) {
           router.push('/books/to-buy')
@@ -71,12 +84,7 @@ export default defineComponent({
       }
     }
 
-    const warning = () => {
-      message.success('ciao')
-    }
-
-    return { mail, password, login, warning };
+    return { email, password, login };
   }
-
 });
 </script>
