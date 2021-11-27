@@ -69,15 +69,13 @@ export default defineComponent({
 
           message.success("Login effettuato con successo!")
         } else {
-          message.error('Non hai completato la procedura di onboarding!</b><br>Verifica la tua casella l\'e-mail di benvenuto!')
+          message.error('Non hai completato la procedura di onboarding! Verifica la tua casella l\'e-mail di benvenuto!')
         }
       }
       catch (err) {
         console.log(err)
         if (err === 401) {
           message.error('Credenziali di login errate!')
-        // } else if (err.body.error === 'onboarding_not_completed') {
-        //   message.error('<b>Non hai completato la procedura di onboarding!</b><br>Verifica sulla tua casella l\'e-mail di benvenuto!')
         } else {
           message.error('Errore inaspettato!')
         }
