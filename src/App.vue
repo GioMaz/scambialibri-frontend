@@ -1,23 +1,13 @@
 <template>
-  <n-config-provider :theme-overrides="themeOverrides">
-    <n-message-provider placement="bottom-right">
-      <router-view/>
-    </n-message-provider>
-  </n-config-provider>
+  <router-view/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import {
-  NMessageProvider,
-  NConfigProvider,
-} from 'naive-ui'
 
 export default defineComponent({
   name: 'Login',
   components: {
-    NMessageProvider,
-    NConfigProvider
   },
   setup() {
     const themeOverrides = {

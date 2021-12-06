@@ -13,8 +13,8 @@ export default class AuthService {
 
     async login(mail: string, password: string): Promise<IUser> {
         const response = await axios.post(this.url, {
-          mail: mail,
-          password: password
+            mail: mail,
+            password: password
         })
 
         // if (!response.data.accessToken) {
