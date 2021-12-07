@@ -1,23 +1,20 @@
 <template>
-  <form>
-    <input
-      :value="email"
-      placeholder="Email"
-      class="input-field"
-    />
-    <input
-      :value="password"
-      placeholder="Password"
-      type="password"
-      show-password-on="mousedown"
-      class="input-field"
-    />
-    <button
-      type="primary" 
-      @click="login()"
-      block
-    >Login</button>
-  </form>
+  <div class="m-auto md:w-2/5 bg-gray-50">
+    <form class="flex flex-col">
+      <input class="p-2 mx-4 mt-4 border-2 rounded-md"
+        :value="email"
+        placeholder="Email"
+      />
+      <input class="p-2 mx-4 mt-2 border-2 rounded-md"
+        :value="password"
+        placeholder="Password"
+        show-password-on="mousedown"
+      />
+      <button class="p-2 mx-4 my-4 text-white bg-blue-600 rounded-md"
+        @click="login()"
+      >Login</button>
+    </form>
+  </div>
 </template>
 
 <script lang="ts">
@@ -46,7 +43,7 @@ export default defineComponent({
         user.value = await auth.login(email.value as string, password.value as string)
 
         if (user.value.onboardingCompleted) {
-          router.push('/books/tbuy')
+          router.push('/books/buy')
           // message.success("Login effettuato con successo!")
         } else {
           // message.error('Non hai completato la procedura di onboarding! Verifica la tua casella l\'e-mail di benvenuto!')
