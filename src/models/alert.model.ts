@@ -1,9 +1,9 @@
 export default interface IAlert {
-    type: AlertType;
-    message: string;
-    permanent: boolean;
+  type: AlertType;
+  message: string;
+  permanent: boolean;
 }
 
 export enum AlertType {
-    Success, Error, Info, Warning
+  Success, Error, Info, Warning
 }

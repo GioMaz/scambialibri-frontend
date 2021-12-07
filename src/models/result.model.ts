@@ -2,13 +2,13 @@
 import IBook from './book.model';
 
 export interface IResult {
-    book: IBook;
-    users: [{
-        firstName: string;
-        lastName: string;
-        address: string;
-        // status: BookStatus;
-        status: any;
-        additionalMaterial: boolean;
-    }];
+  book: IBook;
+  users: [{
+    firstName: string;
+    lastName: string;
+    address: string;
+    // status: BookStatus;
+    status: any;
+    additionalMaterial: boolean;
+  }];
 }

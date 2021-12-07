@@ -1,4 +1,4 @@
 export default class IForgotPasswordModal {
-    confirm?: Function;
-    cancel?: Function;
+  confirm?: Function;
+  cancel?: Function;
 }

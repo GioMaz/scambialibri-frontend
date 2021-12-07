@@ -1,15 +1,15 @@
 export default interface IUser {
-    id: string;
-    accessToken: string;
-    mail: string;
+  id: string;
+  accessToken: string;
+  mail: string;
 
-    firstName?: string;
-    lastName?: string;
+  firstName?: string;
+  lastName?: string;
 
-    school?: string;
-    specialization?: string;
-    currentGrade?: string;
-    futureGrade?: string;
+  school?: string;
+  specialization?: string;
+  currentGrade?: string;
+  futureGrade?: string;
 
-    onboardingCompleted?: boolean;
+  onboardingCompleted?: boolean;
 }

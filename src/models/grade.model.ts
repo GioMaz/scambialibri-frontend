@@ -1,6 +1,6 @@
 export default interface IGrade {
-    id: string;
-    year: number;
-    section: string;
-    specializationName?: string;
+  id: string;
+  year: number;
+  section: string;
+  specializationName?: string;
 }

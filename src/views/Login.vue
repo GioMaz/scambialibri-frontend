@@ -1,23 +1,23 @@
 <template>
-  <o-form>
-    <o-input
+  <form>
+    <input
       :value="email"
       placeholder="Email"
       class="input-field"
     />
-    <o-input
+    <input
       :value="password"
       placeholder="Password"
       type="password"
       show-password-on="mousedown"
       class="input-field"
     />
-    <o-button
+    <button
       type="primary" 
       @click="login()"
       block
-    >Login</o-button>
-  </o-form>
+    >Login</button>
+  </form>
 </template>
 
 <script lang="ts">
@@ -46,7 +46,7 @@ export default defineComponent({
         user.value = await auth.login(email.value as string, password.value as string)
 
         if (user.value.onboardingCompleted) {
-          router.push('/books/to-buy')
+          router.push('/books/tbuy')
           // message.success("Login effettuato con successo!")
         } else {
           // message.error('Non hai completato la procedura di onboarding! Verifica la tua casella l\'e-mail di benvenuto!')
