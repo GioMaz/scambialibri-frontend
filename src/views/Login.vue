@@ -6,6 +6,7 @@
       <button class="p-2 mx-4 my-4 text-white bg-blue-600 rounded-md">Login</button>
     </form>
   </div>
+  <Notifications/>
 </template>
 
 <script lang="ts">
@@ -17,11 +18,18 @@ import AuthService from '../services/auth.service';
 
 import IUser from '../models/user.model';
 
+import { useNotificationStore } from '../store/notifications'
+
+import Notifications from '../components/Notifications.vue'
+
 export default defineComponent({
   name: 'Login',
   components: {
+    Notifications
   },
   setup() {
+    const notificationsStore = useNotificationStore();
+
     const API_URL = 'http://localhost:1337/user/login'
 
     const email = ref<string>()
@@ -39,24 +47,20 @@ export default defineComponent({
 
         if (user.value.onboardingCompleted) {
           router.push('/books/buy')
-          // message.success("Login effettuato con successo!")
+          notificationsStore.addNotification('success', 'Login effettuato con successo')
         } else {
-          // message.error('Non hai completato la procedura di onboarding! Verifica la tua casella l\'e-mail di benvenuto!')
+          notificationsStore.addNotification('error', 'Non hai completato la procedura di onboarding! Verifica la tua casella l\'e-mail di benvenuto!')
         }
       }
       catch (err) {
-        // console.log(err)
         if (err === 401) {
-          // message.error('Credenziali di login errate!')
+          notificationsStore.addNotification('error', 'Credenziali di login errate!')
         } else {
-          // message.error('Errore inaspettato!')
+          notificationsStore.addNotification('error', 'Errore inaspettato!')
         }
       }
     }
-    return { email, password, login };
+    return { email, password, login, notificationsStore };
   }
 });
 </script>
-
-<style scoped>
-</style>

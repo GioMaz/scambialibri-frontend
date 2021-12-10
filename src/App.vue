@@ -6,13 +6,8 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'Login',
+  name: 'App',
   components: {
-  },
-  setup() {
-    const themeOverrides = {
-    }
-    return { themeOverrides }
   }
 })
 </script>
