@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
+import ToBuy from '../views/ToBuy.vue'
+import ToSell from '../views/ToSell.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -22,13 +24,13 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/books/to-buy',
-    name: 'Home',
-    component: Home
+    name: 'ToBuy',
+    component: ToBuy
   },
   {
     path: '/books/to-sell',
-    name: 'Home',
-    component: Home
+    name: 'ToSell',
+    component: ToSell
   },
 ]
 

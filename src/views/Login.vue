@@ -46,7 +46,7 @@ export default defineComponent({
         user.value = await auth.login(email.value as string, password.value as string)
 
         if (user.value.onboardingCompleted) {
-          router.push('/books/buy')
+          router.push('/books/to-buy')
           notificationsStore.addNotification('success', 'Login effettuato con successo')
         } else {
           notificationsStore.addNotification('error', 'Non hai completato la procedura di onboarding! Verifica la tua casella l\'e-mail di benvenuto!')
