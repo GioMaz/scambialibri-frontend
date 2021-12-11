@@ -1,13 +1,18 @@
 <template>
   <div class="mx-auto my-6 w-1/2 md:w-1/4">
     <img src="../assets/logo.svg" alt="">
-    <!-- Lo ScambiaLibri -->
   </div>
-  <div class="m-auto">
-    <ul class="grid grid-cols-3">
-      <li class="text-center">Libri da comprare</li>
-      <li class="text-center">Libri da vendere</li>
-      <li class="text-center">Resoconti</li>
+  <div class="">
+    <ul class="flex justify-center">
+      <li class="text-center mx-4 text-lg">
+        <a href="">Libri da comprare</a>
+      </li>
+      <li class="text-center mx-4 text-lg">
+        <a href="">Libri da vendere</a>
+      </li>
+      <li class="text-center mx-4 text-lg">
+        <a href="">Resoconti</a>
+      </li>
     </ul>
   </div>
 </template>
