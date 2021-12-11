@@ -1,7 +1,7 @@
 <template>
   <div class="grid place-items-center md:h-screen">
     <div class="m-auto md:w-1/2 lg:w-1/3 bg-gray-10 rounded-md">
-      <div class="mx-auto my-6 w-1/2 md:w-2/3">
+      <div class="mx-auto mt-6 mb-2 w-1/2 md:w-2/3">
         <img src="../assets/logo.svg" alt="">
       </div>
       <form class="flex flex-col" v-on:submit.prevent="login">

@@ -5,13 +5,13 @@
   <div class="">
     <ul class="flex justify-center">
       <li class="text-center mx-4 text-lg">
-        <a href="">Libri da comprare</a>
+        <router-link to="/books/to-buy">Libri da comprare</router-link>
       </li>
       <li class="text-center mx-4 text-lg">
-        <a href="">Libri da vendere</a>
+        <router-link to="/books/to-sell">Libri da vendere</router-link>
       </li>
       <li class="text-center mx-4 text-lg">
-        <a href="">Resoconti</a>
+        <router-link to="/books/to-sell">Resoconti</router-link>
       </li>
     </ul>
   </div>
