@@ -1,16 +1,16 @@
 <template>
-  <div class="mx-auto my-6 w-1/2 md:w-1/4">
+  <div class="mx-auto my-8 w-2/3 md:w-1/4">
     <img src="../assets/logo.svg" alt="">
   </div>
-  <div class="">
-    <ul class="flex justify-center">
-      <li class="text-center mx-4 text-lg">
+  <div class="mb-4 overflow-x-auto">
+    <ul class="flex justify-left md:justify-center">
+      <li class="mx-4 text-lg text-center whitespace-nowrap">
         <router-link to="/books/to-buy" replace>Libri da comprare</router-link>
       </li>
-      <li class="text-center mx-4 text-lg">
+      <li class="mx-4 text-lg text-center whitespace-nowrap">
         <router-link to="/books/to-sell" replace>Libri da vendere</router-link>
       </li>
-      <li class="text-center mx-4 text-lg">
+      <li class="mx-4 text-lg text-center whitespace-nowrap">
         <router-link to="/books/to-sell" replace>Resoconti</router-link>
       </li>
     </ul>

@@ -49,9 +49,6 @@ export default defineComponent({
 
     const login = async () => {
       try {
-        console.log(email.value)
-        console.log(password.value)
-
         user.value = await auth.login(email.value as string, password.value as string)
 
         if (user.value.onboardingCompleted) {
