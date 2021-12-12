@@ -11,7 +11,7 @@
         <router-link to="/books/to-sell" replace>Libri da vendere</router-link>
       </li>
       <li class="mx-4 text-lg text-center whitespace-nowrap">
-        <router-link to="/books/to-sell" replace>Resoconti</router-link>
+        <router-link to="/books/purchases-report" replace>Resoconti</router-link>
       </li>
     </ul>
   </div>

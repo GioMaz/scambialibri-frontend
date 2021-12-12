@@ -3,6 +3,8 @@ import Login from '../views/Login.vue'
 import Home from '../views/Home.vue'
 import ToBuy from '../views/ToBuy.vue'
 import ToSell from '../views/ToSell.vue'
+import PurchasesReport from '../views/PurchasesReport.vue'
+import SalesReport from '../views/SalesReport.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -11,23 +13,27 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/login',
-    name: 'Login',
     component: Login
   },
   {
     path: '/home',
-    name: 'Home',
     component: Home,
     children: [
       {
         path: '/books/to-buy',
-        name: 'ToBuy',
         component: ToBuy
       },
       {
         path: '/books/to-sell',
-        name: 'ToSell',
         component: ToSell
+      },
+      {
+        path: '/books/purchases-report',
+        component: PurchasesReport
+      },
+      {
+        path: '/books/sales-report',
+        component: SalesReport
       }
     ]
   },
