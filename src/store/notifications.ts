@@ -2,9 +2,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue';
 
 export const useNotificationStore = defineStore('notifications', () => {
-  // TODO: initialize empty ref
-  const notifications = ref<[{type?: 'error' | 'success', value?: string}]>([{}])
-  // notifications.value.pop()
+  const notifications = ref<{type?: 'error' | 'success', value?: string}[]>([])
 
   const addNotification = async (type: 'error' | 'success', value: string) => {
     notifications.value.push({
@@ -15,7 +13,7 @@ export const useNotificationStore = defineStore('notifications', () => {
   }
 
   const removeNotification = async () => {
-    notifications.value.pop()
+    notifications.value.shift()
   }
 
   return { notifications, addNotification }
