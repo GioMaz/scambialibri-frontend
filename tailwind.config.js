@@ -7,9 +7,12 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       'white': '#FFFFFF',
-      'gray-10': '#F9F9F9',
-      'gray-20': '#989898',
+      'gray1': '#F9F9F9',
+      'gray2': '#989898',
       'cyan': '#0891B2',
+      'green': '#6BB748',
+      'red1': '#DA7373',
+      'red2': '#9E1010',
     }
   },
   variants: {

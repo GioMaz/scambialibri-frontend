@@ -16,5 +16,5 @@ export const useNotificationStore = defineStore('notifications', () => {
     notifications.value.shift()
   }
 
-  return { notifications, addNotification }
+  return { notifications, addNotification, removeNotification }
 })
