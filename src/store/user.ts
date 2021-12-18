@@ -6,20 +6,27 @@ import IUser from '../models/user.model';
 import axios from 'axios';
 
 export const useUserStore = defineStore('user', () => {
-  const API_URL = 'http://localhost:1337/user/login'
-  const token = ref<string>()
+  const user = ref<IUser>();
   const authenticated = ref<boolean>()
 
-  const user = ref<IUser>();
+  const url = process.env.API_URL
 
   const login = async (mail: string, password: string) => {
-    const response = await axios.post(API_URL, {
+    const response = await axios.post(`${url}/user/login`, {
       mail: mail,
       password: password
     })
 
     user.value = response.data as IUser;
-    token.value = user.value.accessToken;
+  }
+
+  const signup = async (mail: string, password: string) => {
+    const response = await axios.post(`${url}/user/signup`, {
+      mail: mail,
+      password: password
+    })
+
+    return response.data
   }
 
   const logout = async () => {
@@ -27,5 +34,5 @@ export const useUserStore = defineStore('user', () => {
     user.value = undefined;
   }
 
-  return { user, login, logout }
+  return { user, login, signup, logout }
 })

@@ -5,6 +5,7 @@ import ToBuy from '../views/ToBuy.vue'
 import ToSell from '../views/ToSell.vue'
 import PurchasesReport from '../views/PurchasesReport.vue'
 import SalesReport from '../views/SalesReport.vue'
+import Settings from '../views/Settings.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -37,6 +38,10 @@ const routes: Array<RouteRecordRaw> = [
       }
     ]
   },
+  {
+    path: '/settings',
+    component: Settings
+  }
 ]
 
 const router = createRouter({
