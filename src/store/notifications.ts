@@ -9,7 +9,7 @@ export const useNotificationStore = defineStore('notifications', () => {
       type,
       value
     })
-    setTimeout( removeNotification , 3000);
+    setTimeout(removeNotification, 3000);
   }
 
   const removeNotification = async () => {

@@ -6,7 +6,7 @@
       </div>
       <form class="flex flex-col" v-on:submit.prevent="login">
         <input class="p-2 mx-4 mt-4 border-md rounded-md" v-model="email" placeholder="Email"/>
-        <input class="p-2 mx-4 mt-2 border-md rounded-md" v-model="password" type="password" placeholder="Password" />
+        <input class="p-2 mx-4 mt-2 border-md rounded-md" v-model="password" type="password" placeholder="Password"/>
         <button class="p-2 mx-4 my-4 text-white bg-cyan rounded-md">Login</button>
       </form>
       <div class="flex flex-col items-center pb-6 text-sm">
@@ -23,11 +23,8 @@ import { defineComponent, ref } from 'vue';
 
 import router from '../router'
 
-import AuthService from '../services/auth.service';
-
-import IUser from '../models/user.model';
-
 import { useNotificationStore } from '../store/notifications'
+import { useUserStore } from '../store/user'
 
 import Notifications from '../components/Notifications.vue'
 
@@ -38,20 +35,16 @@ export default defineComponent({
   },
   setup() {
     const notificationsStore = useNotificationStore();
-
-    const API_URL = 'http://localhost:1337/user/login'
+    const userStore = useUserStore();
 
     const email = ref<string>()
     const password = ref<string>()
 
-    const user = ref<IUser>()
-    const auth = new AuthService(API_URL)
-
     const login = async () => {
       try {
-        user.value = await auth.login(email.value as string, password.value as string)
+        await userStore.login(email.value as string, password.value as string)
 
-        if (user.value.onboardingCompleted) {
+        if (userStore.user?.onboardingCompleted) {
           router.push('/books/to-buy')
           notificationsStore.addNotification('success', 'Login effettuato con successo')
         } else {
