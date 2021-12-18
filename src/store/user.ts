@@ -9,7 +9,7 @@ export const useUserStore = defineStore('user', () => {
   const user = ref<IUser>();
   const authenticated = ref<boolean>()
 
-  const url = process.env.API_URL
+  const url = process.env.VUE_APP_API_URL
 
   const login = async (mail: string, password: string) => {
     const response = await axios.post(`${url}/user/login`, {

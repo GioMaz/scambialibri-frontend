@@ -51,8 +51,8 @@ export default defineComponent({
           notificationsStore.addNotification('error', 'Non hai completato la procedura di onboarding! Verifica la tua casella l\'e-mail di benvenuto!')
         }
       }
-      catch (err) {
-        if (err === 401) {
+      catch (err: any) {
+        if (err.response.status === 400 || err.response.status == 401) {
           notificationsStore.addNotification('error', 'Credenziali di login errate!')
         } else {
           notificationsStore.addNotification('error', 'Errore inaspettato!')
