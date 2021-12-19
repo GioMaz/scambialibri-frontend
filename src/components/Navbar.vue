@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto my-8 w-2/3 md:w-1/4">
+  <div class="mx-auto my-8 w-1/2 md:w-1/3 lg:w-1/6">
     <img src="../assets/logo.svg" alt="">
   </div>
   <div class="mb-4 overflow-x-auto">
@@ -14,6 +14,8 @@
         <router-link to="/books/purchases-report" replace>Resoconti</router-link>
       </li>
     </ul>
+  </div>
+  <div class="absolute right-4 top-8 w-8 h-8 rounded-full bg-gray2">
   </div>
 </template>
 

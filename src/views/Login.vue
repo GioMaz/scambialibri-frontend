@@ -6,7 +6,7 @@
       </div>
       <form class="flex flex-col" v-on:submit.prevent="login">
         <input class="p-2 mx-4 mt-4 border-md rounded-md" v-model="email" placeholder="Email"/>
-        <div class="mx-4 mt-1 text-sm text-red2" v-if="isEmailValid()">
+        <div class="mx-4 mt-1 text-sm text-red2" v-if="!isEmailValid()">
           <p>L'indirizzo email non è valido</p>
         </div>
         <input class="p-2 mx-4 mt-2 border-md rounded-md" v-model="password" type="password" placeholder="Password"/>
@@ -44,7 +44,7 @@ export default defineComponent({
     const password = ref<string>()
 
     const login = async () => {
-      if (isEmailValid()) return
+      if (!isEmailValid()) return
 
       try {
         await userStore.login(email.value as string, password.value as string)
@@ -68,10 +68,10 @@ export default defineComponent({
     const isEmailValid = () => {
       const re = /\S+@\S+\.\S+/;
       if (re.test(email.value as string) || email.value?.length == undefined) {
-        return false
+        return true
       }
 
-      return true
+      return false
     }
 
     return { notificationsStore, email, password, login, isEmailValid };
