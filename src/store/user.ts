@@ -7,8 +7,6 @@ import axios from 'axios';
 
 export const useUserStore = defineStore('user', () => {
   const user = ref<IUser>();
-  const authenticated = ref<boolean>()
-
   const url = process.env.VUE_APP_API_URL
 
   const login = async (mail: string, password: string) => {
@@ -30,7 +28,6 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const logout = async () => {
-    authenticated.value = false;
     user.value = undefined;
   }
 

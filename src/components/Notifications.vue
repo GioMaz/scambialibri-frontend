@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute bottom-4 right-0 w-full md:w-1/3" @click="notificationsStore.removeNotification">
+  <div class="absolute bottom-4 right-0 w-full md:w-96" @click="notificationsStore.removeNotification">
     <div v-for="notification in notificationsStore.notifications" :key="notification">
       <div class="p-4 mx-4 mt-4 rounded-md text-white cursor-pointer" :id="notification.type">
         {{ notification.value }}

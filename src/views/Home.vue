@@ -1,7 +1,7 @@
 <template>
-  <Navbar/>
+  <navbar/>
   <router-view/>
-  <Notifications/>
+  <notifications/>
 </template>
 
 <script lang="ts">
