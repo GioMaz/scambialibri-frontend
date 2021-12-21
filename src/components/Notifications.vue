@@ -1,7 +1,7 @@
 <template>
-  <div class="absolute bottom-4 right-0 w-full md:w-96" @click="notificationsStore.removeNotification">
+  <div class="absolute bottom-0 right-0 w-full md:w-96" @click="notificationsStore.removeNotification">
     <div v-for="notification in notificationsStore.notifications" :key="notification">
-      <div class="p-4 mx-4 mt-4 rounded-md text-white cursor-pointer" :id="notification.type">
+      <div class="p-4 m-4 rounded-lg text-white cursor-pointer" :id="notification.type">
         {{ notification.value }}
       </div>
     </div>
@@ -30,6 +30,6 @@ export default defineComponent({
 }
 
 #success {
-  background-color: #6BB748;
+  background-color: #85B548;
 }
 </style>
