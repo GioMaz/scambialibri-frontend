@@ -29,6 +29,10 @@ export default defineComponent({
   background-color: #DA7373;
 }
 
+#alert {
+  background-color: #EEA33C;
+}
+
 #success {
   background-color: #85B548;
 }

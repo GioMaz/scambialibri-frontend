@@ -3,7 +3,7 @@ import { ref } from 'vue';
 
 export const useNotificationStore = defineStore('notifications', () => {
   const notifications = ref<{type?: 'error' | 'alert' | 'success', value?: string}[]>([])
-  const modal = ref<{title: string, value: string} | undefined>()
+  const modal = ref<{title: string, value: string}>()
 
   const addNotification = async (type: 'error' | 'alert' | 'success', value: string) => {
     notifications.value.push({

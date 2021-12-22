@@ -40,21 +40,21 @@ export default defineComponent({
     const notificationsStore = useNotificationStore();
     const userStore = useUserStore();
 
-    const email = ref<string>()
-    const password = ref<string>()
+    const email = ref()
+    const password = ref()
 
     const login = async () => {
 
       if (!isEmailValid()) return
 
       try {
-        await userStore.login(email.value as string, password.value as string)
+        await userStore.login(email.value, password.value)
 
         if (userStore.user?.onboardingCompleted) {
           router.push('/books/to-buy')
           notificationsStore.addNotification('success', 'Login effettuato con successo')
         } else {
-          notificationsStore.addNotification('error', 'Non hai completato la procedura di onboarding! Verifica la tua casella l\'e-mail di benvenuto!')
+          notificationsStore.addNotification('alert', 'Non hai completato la procedura di onboarding! Verifica la tua casella l\'e-mail di benvenuto!')
         }
       }
       catch (err: any) {
