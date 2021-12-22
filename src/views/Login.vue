@@ -24,12 +24,12 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 
-import router from '../router'
+import router from '../router';
 
-import { useNotificationStore } from '../store/notifications'
-import { useUserStore } from '../store/user'
+import { useNotificationStore } from '../store/notifications';
+import { useUserStore } from '../store/user';
 
-import Notifications from '../components/Notifications.vue'
+import Notifications from '../components/Notifications.vue';
 
 export default defineComponent({
   name: 'Login',
@@ -45,7 +45,8 @@ export default defineComponent({
 
     const login = async () => {
 
-      if (!isEmailValid()) return
+      if (!isEmailValid())
+        return
 
       try {
         await userStore.login(email.value, password.value)
@@ -57,7 +58,7 @@ export default defineComponent({
           notificationsStore.addNotification('alert', 'Non hai completato la procedura di onboarding! Verifica la tua casella l\'e-mail di benvenuto!')
         }
       }
-      catch (err: any) {
+      catch(err: any) {
         if (err.response?.status === 400 || err.response?.status === 401) {
           notificationsStore.addNotification('error', 'Credenziali di login errate!')
         } else {
@@ -68,7 +69,7 @@ export default defineComponent({
 
     const isEmailValid = () => {
       const re = /\S+@\S+\.\S+/;
-      if (re.test(email.value as string) || email.value?.length == undefined) {
+      if (re.test(email.value) || email.value === undefined) {
         return true
       }
 

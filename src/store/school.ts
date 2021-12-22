@@ -1,10 +1,10 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 import { ref } from 'vue';
+
+import axios from 'axios';
 
 import ISchool from '../models/school.model';
 import ISpecialization from '../models/specialization.model';
-
-import axios from 'axios';
 
 export const useSchoolStore = defineStore('school', () => {
   const url = process.env.VUE_APP_API_URL

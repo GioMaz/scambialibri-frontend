@@ -1,9 +1,9 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-import IUser from '../models/user.model';
-
 import axios from 'axios';
+
+import IUser from '../models/user.model';
 
 export const useUserStore = defineStore('user', () => {
   const user = ref<IUser>();
