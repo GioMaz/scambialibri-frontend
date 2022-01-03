@@ -10,7 +10,7 @@ export const useSchoolStore = defineStore('school', () => {
   const url = process.env.VUE_APP_API_URL
 
   const schools = ref<ISchool[]>()
-  const specialization = ref<ISpecialization[]>()
+  const specializations = ref<ISpecialization[]>()
   const grades = ref<ISpecialization[]>()
 
   const getSchools = async () => {
@@ -20,7 +20,7 @@ export const useSchoolStore = defineStore('school', () => {
 
   const getSpecializations = async (school: ISchool) => {
     const response = await axios.get(`${url}/school/${school.id}/specialization`)
-    specialization.value = response.data as ISpecialization[]
+    specializations.value = response.data as ISpecialization[]
   }
 
   const getGrades = async (school: ISchool, specialization: ISpecialization, populate?: string[]) => {
@@ -30,7 +30,7 @@ export const useSchoolStore = defineStore('school', () => {
 
   return {
     schools,
-    specialization,
+    specializations,
     grades,
     getSchools,
     getSpecializations,

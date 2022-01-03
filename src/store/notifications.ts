@@ -21,11 +21,16 @@ export const useNotificationStore = defineStore('notifications', () => {
     modal.value = { title, value }
   }
 
+  const removeModal = async () => {
+    modal.value = undefined
+  }
+
   return {
     notifications,
     addNotification,
     removeNotification,
     modal,
-    addModal
+    addModal,
+    removeModal
   }
 })

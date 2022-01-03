@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Login from '../views/Login.vue'
 import Home from '../views/Home.vue'
+import Onboarding from '../views/Onboarding.vue'
 import ToBuy from '../views/ToBuy.vue'
 import ToSell from '../views/ToSell.vue'
 import PurchasesReport from '../views/PurchasesReport.vue'
@@ -37,6 +38,10 @@ const routes: Array<RouteRecordRaw> = [
         component: SalesReport
       }
     ]
+  },
+  {
+    path: '/Onboarding',
+    component: Onboarding
   },
   {
     path: '/settings',
