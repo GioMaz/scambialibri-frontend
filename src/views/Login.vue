@@ -1,24 +1,24 @@
 <template>
   <div class="grid place-items-center md:h-screen">
-    <div class="m-auto md:w-96 bg-gray1 rounded-lg">
+    <div class="m-auto md:w-96 bg-gray-100 rounded-lg">
       <div class="mx-auto my-8 w-1/2 md:w-2/3">
         <img src="../assets/logo.svg" alt="">
       </div>
       <form class="flex flex-col mx-6" v-on:submit.prevent="login">
         <input class="p-3 border-md rounded-lg" v-model="email" placeholder="Email"/>
-        <div class="pl-3 mt-1 text-sm text-red2" v-if="!isEmailValid()">
+        <div class="pl-3 mt-1 text-sm text-red-800" v-if="!isEmailValid()">
           <p>L'indirizzo email non è valido</p>
         </div>
         <input class="p-3 mt-4 border-md rounded-lg" v-model="password" type="password" placeholder="Password"/>
-        <button class="p-3 mt-4 text-white bg-cyan rounded-lg">Login</button>
+        <button class="p-3 mt-4 text-white bg-primary rounded-lg">Login</button>
       </form>
       <div class="flex flex-col items-center my-6 text-sm">
-        <a class="text-gray2" href="">Hai dimenticato la password? Clicca qui!</a>
-        <a class="text-gray2 mt-2" href="">Non sei ancora registrato? Clicca qui!</a>
+        <a class="text-gray-500" href="">Hai dimenticato la password? Clicca qui!</a>
+        <a class="text-gray-500 mt-2" href="">Non sei ancora registrato? Clicca qui!</a>
       </div>
     </div>
   </div>
-  <Notifications/>
+  <notifications/>
 </template>
 
 <script lang="ts">

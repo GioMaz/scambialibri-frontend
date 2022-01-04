@@ -24,7 +24,8 @@ export default defineComponent({
     const userStore = useUserStore()
 
     if (userStore.user == undefined) {
-      router.push('/login')
+      // uncomment for debug
+      // router.push('/login')
     }
   }
 });

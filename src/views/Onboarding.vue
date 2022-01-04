@@ -1,16 +1,16 @@
 <template>
-  <select v-model="school">
+  <select v-model="school" class="p-3 border-md rounded-lg">
     <option v-for="school in schoolStore.schools" :key="school" :value="school">
       {{ school.name }}
     </option>
   </select>
-  <select v-model="specialization">
+  <select v-model="specialization" class="p-3 border-md rounded-lg">
     <option v-for="specialization in schoolStore.specializations" :key="specialization" :value="specialization">
       {{ specialization.name }}
     </option>
   </select>
-  <select v-model="grade">
-    <option v-for="grade in schoolStore.grades" :key="grade" :value="grade">
+  <select v-model="grade" class="p-3 border-md rounded-lg">
+    <option v-for="grade in schoolStore.grades" :key="grade" :value="grade" class="">
       {{ grade.year + grade.section }}
     </option>
   </select>
@@ -57,3 +57,6 @@ export default defineComponent({
   }
 })
 </script>
+
+<style>
+</style>

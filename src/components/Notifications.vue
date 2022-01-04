@@ -34,6 +34,6 @@ export default defineComponent({
 }
 
 #success {
-  background-color: #85B548;
+  background-color: #71BE56;
 }
 </style>

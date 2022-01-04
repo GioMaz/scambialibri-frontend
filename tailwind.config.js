@@ -6,18 +6,10 @@ module.exports = {
       width: {
         '96': '24rem',
         '128': '32rem',
+      },
+      colors: {
+        'primary': '#0891b2',
       }
-    },
-    colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      'white': '#FFFFFF',
-      'gray1': '#F9F9F9',
-      'gray2': '#989898',
-      'cyan': '#0891B2',
-      'green': '#6BB748',
-      'red1': '#DA7373',
-      'red2': '#9E1010',
     }
   },
   variants: {

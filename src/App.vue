@@ -14,7 +14,7 @@ export default defineComponent({
 
 <style>
 #app {
-  font-family: Muli;
+  font-family: Nunito;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -36,16 +36,16 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/books/sales-report',
         component: SalesReport
+      },
+      {
+        path: '/settings',
+        component: Settings
       }
     ]
   },
   {
     path: '/Onboarding',
     component: Onboarding
-  },
-  {
-    path: '/settings',
-    component: Settings
   }
 ]
 
