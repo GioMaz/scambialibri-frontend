@@ -1,35 +1,42 @@
+import ISchool from '@/models/school.model';
+import IUser from '@/models/user.model';
+import axios  from 'axios';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-
-import axios from 'axios';
-
-import IUser from '../models/user.model';
+import { useAuthStore } from './auth';
 
 export const useUserStore = defineStore('user', () => {
-  const user = ref<IUser>();
-  const url = process.env.VUE_APP_API_URL
+  const authStore = useAuthStore();
+  const currentUser = ref<IUser>();
+  const currentUserSchool = ref<ISchool>();
+  const url = process.env.VUE_APP_API_URL;
 
-  const login = async (mail: string, password: string) => {
-    const response = await axios.post(`${url}/user/login`, {
-      mail: mail,
-      password: password
+  const getUser = async (id: string, populate: string[] = []) => {
+    await axios.get(`${url}/user/${id}?` + populate.map(e => `populate[]=${e}`).join('&'), {
+    headers: {
+      Authorization: 'bearer ' + authStore.token }
     })
-
-    user.value = response.data as IUser;
+    .then(response =>
+      currentUser.value = response.data as IUser
+    );
   }
 
-  const signup = async (mail: string, password: string) => {
-    const response = await axios.post(`${url}/user/signup`, {
-      mail: mail,
-      password: password
-    })
-
-    return response.data
+  const completeOnboarding = async (token: string, data: any) => {
+    const response = await axios.get(`${url}/user/onboarding?token=${token}`)
+    return response.data;
   }
 
-  const logout = async () => {
-    user.value = undefined;
+  const getUserSchool = async (id: string) => {
+    await axios.get(`${url}/user/${id}/school`)
+    .then(response =>
+      currentUserSchool.value = response.data as ISchool
+    );
   }
 
-  return { user, login, signup, logout }
+  return {
+    currentUser,
+    currentUserSchool,
+    getUser,
+    completeOnboarding,
+  };
 })

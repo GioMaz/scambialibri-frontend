@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, watch } from 'vue';
+import { defineComponent, onMounted, ref, watch } from 'vue';
 
 import { useSchoolStore } from '../store/school';
 

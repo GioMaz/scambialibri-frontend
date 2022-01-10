@@ -27,7 +27,7 @@ import { defineComponent, ref } from 'vue';
 import router from '../router';
 
 import { useNotificationStore } from '../store/notifications';
-import { useUserStore } from '../store/user';
+import { useAuthStore } from '../store/auth';
 
 import Notifications from '../components/Notifications.vue';
 
@@ -38,31 +38,31 @@ export default defineComponent({
   },
   setup() {
     const notificationsStore = useNotificationStore();
-    const userStore = useUserStore();
+    const userStore = useAuthStore();
 
-    const email = ref()
-    const password = ref()
+    const email = ref();
+    const password = ref();
 
     const login = async () => {
 
       if (!isEmailValid())
-        return
+        return;
 
       try {
-        await userStore.login(email.value, password.value)
+        await userStore.login(email.value, password.value);
 
         if (userStore.user?.onboardingCompleted) {
-          router.push('/books/to-buy')
-          notificationsStore.addNotification('success', 'Login effettuato con successo')
+          router.push('/books/to-buy');
+          notificationsStore.addNotification('success', 'Login effettuato con successo');
         } else {
-          notificationsStore.addNotification('alert', 'Non hai completato la procedura di onboarding! Verifica la tua casella l\'e-mail di benvenuto!')
+          notificationsStore.addNotification('alert', 'Non hai completato la procedura di onboarding! Verifica la tua casella l\'e-mail di benvenuto!');
         }
       }
       catch(err: any) {
         if (err.response?.status === 400 || err.response?.status === 401) {
-          notificationsStore.addNotification('error', 'Credenziali di login errate!')
+          notificationsStore.addNotification('error', 'Credenziali di login errate!');
         } else {
-          notificationsStore.addNotification('error', 'Errore inaspettato!')
+          notificationsStore.addNotification('error', 'Errore inaspettato!');
         }
       }
     }
@@ -70,10 +70,9 @@ export default defineComponent({
     const isEmailValid = () => {
       const re = /\S+@\S+\.\S+/;
       if (re.test(email.value) || email.value === undefined) {
-        return true
+        return true;
       }
-
-      return false
+      return false;
     }
 
     return { notificationsStore, email, password, login, isEmailValid };

@@ -5,14 +5,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-
-import Navbar from '../components/Navbar.vue'
-import Notifications from '../components/Notifications.vue'
-
-import { useUserStore } from '../store/user'
-
-import router from '../router'
+import { useAuthStore } from "@/store/auth";
+import { defineComponent } from "@vue/runtime-core";
+import Navbar from "../components/Navbar.vue"
+import Notifications from "../components/Notifications.vue"
 
 export default defineComponent({
   name: 'Home',
@@ -21,9 +17,9 @@ export default defineComponent({
     Notifications
   },
   setup() {
-    const userStore = useUserStore()
+    const userStore = useAuthStore()
 
-    if (userStore.user == undefined) {
+    if (userStore.user === undefined) {
       // uncomment for debug
       // router.push('/login')
     }

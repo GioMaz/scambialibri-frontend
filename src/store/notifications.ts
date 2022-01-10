@@ -1,5 +1,5 @@
-import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import { defineStore } from "pinia"
+import { ref } from "vue"
 
 export const useNotificationStore = defineStore('notifications', () => {
   const notifications = ref<{type?: 'error' | 'alert' | 'success', value?: string}[]>([])
