@@ -16,7 +16,7 @@
   </div>
 
   <!-- navbar lower -->
-  <ul class="flex space-x-6 items-center overflow-x-scroll h-16 mx-2 md:mx-4">
+  <ul class="flex space-x-6 items-center overflow-x-auto h-16 mx-2 md:mx-4">
     <li>
       <router-link to="/books/to-buy" class="text-gray-600 hover:text-black hover:bg-gray-100 p-2 rounded-lg cursor-pointer whitespace-nowrap" replace>Libri da comprare</router-link>
     </li>

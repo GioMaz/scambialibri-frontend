@@ -14,7 +14,7 @@ export const useUserStore = defineStore('user', () => {
   const getUser = async (id: string, populate: string[] = []) => {
     await axios.get(`${url}/user/${id}?` + populate.map(e => `populate[]=${e}`).join('&'), {
     headers: {
-      Authorization: 'bearer ' + authStore.token }
+      Authorization: `bearer ${authStore.token}` }
     })
     .then(response =>
       currentUser.value = response.data as IUser
@@ -22,8 +22,10 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const completeOnboarding = async (token: string, data: any) => {
-    const response = await axios.get(`${url}/user/onboarding?token=${token}`)
-    return response.data;
+    await axios.get(`${url}/user/onboarding?token=${token}`)
+    .then(function (response) {
+      return response.data;
+    })
   }
 
   const getUserSchool = async (id: string) => {
